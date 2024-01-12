@@ -13,6 +13,13 @@
       <li><a href="/">Blogs</a></li>
       <li><a href="/create">Create New Post</a></li>
   </ul>
-    <h1>Blog Newsfeed</h1>
+  <h1>Blog Newsfeed</h1>
+    <% if (blogData.length > 0) { %>
+      <% blogData.forEach(blog => { %>
+      <h4><a href='/'><%= blog.title %></a></h4>
+      <% }) %>  
+    <% } else{ %>
+      <h4>No Blogs to Read Yet!</h4>
+    <% } %>
 </body>
 </html>
