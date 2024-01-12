@@ -7,6 +7,11 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   //placeholder data
   const blogData = [
+  {title:'Test Title 1'},
+  {title:'Test Title 2'},
+  {title:'Test Title 3'},
+  {title:'Test Title 4'},
+  {title:'Test Title 5'},
   ];
 
   res.render("index", {blogData});
