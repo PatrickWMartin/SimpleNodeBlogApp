@@ -10,12 +10,10 @@ const dbConn = "";
 mongoose.connect(dbConn);
 
 app.set("view engine", "ejs");
-
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-  //placeholder data
   let blogData = await Blog.find();
-  console.log(blogData);
   res.render("index", {blogData});
 });
 
@@ -32,13 +30,10 @@ app.get("/create", (req, res) => {
 
 
 app.post("/create", async (req,res)=>{
-   const blog = new Blog({
-    title: 'Test blog2',
-    body: 'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'
-  });
-
-  let result = await blog.save()
-  res.send(result);
+  const blog = new Blog(req.body);
+  console.log(req.body);
+  await blog.save();
+  res.redirect('/');
 })
 
 
