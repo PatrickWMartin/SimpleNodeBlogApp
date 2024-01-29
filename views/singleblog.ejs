@@ -3,6 +3,23 @@
   <%- include('./partials/navbar.ejs') %>
   <h1><%= blogData.title %></h1>
   <p><%= blogData.body %></p>
+  <button id="delete" data-id="<%= blogData._id %>">Delete</button>
+  <script>
+      const deleteButton = document.getElementById('delete');
+      deleteButton.addEventListener('click', async (e) => {
+        console.log(deleteButton.dataset.id);
+        const res = await fetch(`/blog/delete/${deleteButton.dataset.id}`, 
+        {
+          method: 'DELETE',
+        })
+        const data = await res.json();
+
+        window.location.href = data.redirect;
+      });
+      
+      
+
+  </script>
 </body>
 </html>
 
