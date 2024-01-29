@@ -21,8 +21,12 @@ app.get("/", async (req, res) => {
 
 //placeholder for a single blog page
 app.get("/blog/:blogId", async (req, res)=> {
-  let blogData = await Blog.findById(req.params.blogId);
-  res.send(blogData);
+  try{
+    let blogData = await Blog.findById(req.params.blogId);
+    res.render("singleblog", {blogData});
+  } catch(error){
+    console.log(error);
+  }
 });
 
 
