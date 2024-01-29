@@ -1,13 +1,15 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const Blog = require('./models/blogs');
+require('dotenv').config()
+
+
 const app = express();
 
 
 
 const port = 3000;
-const dbConn = "";
-mongoose.connect(dbConn);
+mongoose.connect(process.env.DB_CONNECTION_STRING );
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
